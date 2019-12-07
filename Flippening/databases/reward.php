@@ -9,7 +9,7 @@ for($i=0; $i<=count($json)-1; $i++) {
 	if(strtolower($json[$i]['name'])==strtolower($crypto)) {
 
 		if($json[$i]['priceCurrency']=='BTC') { $price = $price*$json[$i]['price']; }
-		return number_format(floor(86400/$json[$i]['blockTimeInSeconds'])*$json[$i]['blockReward']*$price, 2, '.', '');
+		return number_format(floor(86400/$json[$i]['blockTimeInSeconds'])*$json[$i]['blockReward']*$price, 2, '.', ' ');
 	}
 
 }
