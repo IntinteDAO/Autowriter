@@ -30,7 +30,7 @@ for($i=0; $i<=count($gtrends2)-1; $i++) {
 	$explode_temp = $explode2[$i][0][1];
 	$temp_date = explode('/', $explode2[$i][0][0]);
 	$explode2[$i][0] = strtotime($temp_date[2].'.'.$temp_date[1].'.'.$temp_date[0]);
-	$explode2[$i][1] = str_replace('],', '', str_replace('),', '', $explode_temp));
+	$explode2[$i][1] = trim(str_replace('],', '', str_replace('),', '', $explode_temp)));
 }
 
 return $explode2;
