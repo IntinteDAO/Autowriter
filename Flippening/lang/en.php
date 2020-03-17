@@ -6,3 +6,4 @@ $str['marketcap'] = 'Marketcap';
 $str['tradingvolume'] = 'Trading Volume';
 $str['miningreward'] = 'Mining Reward';
 $str['nodes'] = 'Nodes';
+$str['gtrends'] = 'GTrends';
