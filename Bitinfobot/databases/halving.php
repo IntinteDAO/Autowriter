@@ -4,13 +4,13 @@ function halving($crypto) {
 
 if($crypto=="BTC") {
 	$data = file("https://www.bitcoinblockhalf.com/");
-	$name = "Bitcoin";
+	$name = 'Bitcoin';
 } else {
 	$data = file("https://www.litecoinblockhalf.com/");
-	$name = "Litecoin";
+	$name = 'Litecoin';
 }
 
-
+	$return['name'] = $name;
 for($i=0; $i<=(count($data)-1); $i++) {
 
 	if (strpos($data[$i], 'Reward-Drop ETA date') !== false) {
@@ -22,7 +22,7 @@ for($i=0; $i<=(count($data)-1); $i++) {
 	}
 
 	if (strpos($data[$i], 'coins per block post halving. ') !== false) {
-	$return['future_blockreward'] = str_replace(' coins per block post halving.', '', strip_tags(trim($data[$i])));
+	$return['future_blockreward'] = trim(str_replace(' coins per block post halving.', '', strip_tags(trim($data[$i]))));
 	}
 
 	if (strpos($data[$i], 'Blocks until mining reward is halved:') !== false) {
