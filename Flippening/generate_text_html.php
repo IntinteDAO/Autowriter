@@ -5,7 +5,7 @@ include("lang/$lang.php");
 
 // Hello
 #echo $str['hello'].PHP_EOL.PHP_EOL;
-echo $str['description'].PHP_EOL.PHP_EOL;
+#echo $str['description'].PHP_EOL.PHP_EOL;
 
 // Initialize data
 include('databases/btc_nodes.php');
@@ -17,7 +17,7 @@ include('databases/gtrends.php');
 include('functions/difference.php');
 
 // Create table
-echo '<table border="1" width="100%">'.PHP_EOL;
+echo '<table class="table table-hover table-striped table-sm">'.PHP_EOL;
 echo '<tr><td><b>Metrics</b></td><td><b>Ethereum</b></td><td><b>Bitcoin</b></td><td><b>Flippening</b></td></tr>'.PHP_EOL;
 echo '<tr><td>'.$str['marketcap'].'</td><td>$'.marketcap('ethereum').'</td><td>$'.marketcap('bitcoin').'</td><td>'.diff(marketcap('ethereum'), marketcap('bitcoin')).'%</td></tr>'.PHP_EOL;
 echo '<tr><td>'.$str['tradingvolume'].'</td><td>$'.volume('ethereum').'</td><td>$'.volume('bitcoin').'</td><td>'.diff(volume('ethereum'), volume('bitcoin')).'%</td></tr>'.PHP_EOL;
