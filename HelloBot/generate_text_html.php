@@ -52,4 +52,6 @@ $result = $str['airquality'][$result_airquality['status']].' ('.$result_airquali
 		echo '<td>'.trim($weather_city[$i]).'</td><td>'.weather(trim($weather_city[$i])).'</td><td>'.$result.'</td></tr>';
 	}
 }
+
+if($i%2!=0) { echo '</tr>'; }
 echo '</table>';
