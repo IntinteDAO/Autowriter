@@ -5,6 +5,7 @@ $lang = 'en';
 include('databases/fortunes.php');
 include('databases/hello.php');
 include('databases/weatherfunction.php');
+include('databases/airquality.php');
 include('databases/date.php');
 include("lang/$lang/lang.php");
 include("config.php");
@@ -37,10 +38,18 @@ $weather_city = file('city.txt');
 
 echo '<table class="table table-hover table-striped table-sm">';
 for($i=0; $i<=count($weather_city)-1; $i++) {
+
+// Air Quality
+$city = explode(',', $weather_city[$i])[0];
+$airquality = airquality($city);
+if(empty($airquality)) { $airquality = 0; }
+$result_airquality = airquality_level($airquality);
+$result = $str['airquality'][$result_airquality['status']].' ('.$result_airquality['level'].')';
+
 	if($i%2==0) {
-		echo '<tr><td>'.trim($weather_city[$i]).'</td><td>'.weather(trim($weather_city[$i])).'</td>';
+		echo '<tr><td>'.trim($weather_city[$i]).'</td><td>'.weather(trim($weather_city[$i])).'</td><td>'.$result.'</td>';
 	} else {
-		echo '<td>'.trim($weather_city[$i]).'</td><td>'.weather(trim($weather_city[$i])).'</td></tr>';
+		echo '<td>'.trim($weather_city[$i]).'</td><td>'.weather(trim($weather_city[$i])).'</td><td>'.$result.'</td></tr>';
 	}
 }
 echo '</table>';
