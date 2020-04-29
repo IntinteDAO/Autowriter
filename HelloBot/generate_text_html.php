@@ -7,12 +7,28 @@ include('databases/hello.php');
 include('databases/weatherfunction.php');
 include('databases/airquality.php');
 include('databases/date.php');
+include('databases/bitcoin_optech.php');
 include("lang/$lang/lang.php");
 include("config.php");
 
 // Hello
 echo hello('zapread', $lang);
 echo PHP_EOL.PHP_EOL;
+
+// Bitcoin OpTech
+if(optech_today()=="true") {
+    $current_year = '20' . date("y");
+    $current_month = date("m");
+    $current_day = date("d");
+} else if(optech_yesterday()=="true") {
+    $current_year = '20' . date("y");
+    $current_month = date("m");
+    $current_day = date("d", strtotime('-1 day'));
+}
+
+if(optech_today()=="true" || optech_yesterday()=="true") {
+echo '<h2>New Bitcoin OPTech: <a href="https://bitcoinops.org/en/newsletters/'.$current_year.'/'.$current_month.'/'.$current_day.'">link</a></h2>'.PHP_EOL.PHP_EOL;
+}
 
 // Fortunes
 echo '<h2>'.$str['fortunes'].'</h2>'.PHP_EOL;
